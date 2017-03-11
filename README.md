@@ -12,6 +12,19 @@ The goals / steps of this project are the following:
 * Summarize the results with a written report
 
 
+//]: # (Image References)
+
+[image1]: ./examples/right_recovery_1.jpg "Training Data"
+[image2]: ./examples/right_recovery_2.jpg "Training Data"
+[image3]: ./examples/right_recovery_3.jpg "Training Data"
+[image4]: ./examples/left_recovery_1.jpg "Training Data"
+[image5]: ./examples/left_recovery_2.jpg "Training Data"
+[image6]: ./examples/left_recovery_3.jpg "Training Data"
+[image7]: ./examples/bridge_recovery_1.jpg "Training Data"
+[image8]: ./examples/bridge_recovery_2.jpg "Training Data"
+[image9]: ./examples/bridge_recovery_3.jpg "Training Data"
+[image10]: ./examples/architecture.png "Model Architecture"
+
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
 
@@ -39,12 +52,18 @@ The model.py file contains the code for training and saving the convolution neur
 
 ###Model Architecture and Training Strategy
 
-####1. NVIDIA architecture
+####1. Model Architecture
 
-Before the data is fed to the NVIDIA architecture, the following pre processing is done -
+The model is based out of the NVIDIA architecture. However, before the data is fed to the NVIDIA model, the following pre processing is done -
 Normalizing the data (model.py line 60)
 Mean Center the data
 Crop the image to make the model learn from relevant data (model.py line 62)
+
+The arrangement of convolution layers and fully connected layers perform well and do a good job of extracting the features and predicting the steering angle.
+
+Please find the architecture summary below created using Keras.
+
+![alt text][image10]
 
 
 ####2. Attempts to reduce overfitting in the model
@@ -52,6 +71,8 @@ Crop the image to make the model learn from relevant data (model.py line 62)
 While reading the data from the file to be fed into the network, the images were flipped (model.py line 42)
 and the steering angle was adjusted accordingly to make the data more comprehensive. Also, the images from 
 left camera and right camera were used and the steering angle was adjusted with a correction factor. (model.py lines 27-40)
+
+The data was also split into training set and validation set. (model.py line 83)
 
 The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
@@ -87,14 +108,32 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 ####2. Final Model Architecture
 
-The final model architecture (model.py lines 64-74) is NVIDIA's architecture.
+The final model architecture (model.py lines 64-74) is NVIDIA's architecture along with preprocessing of data as mentioned above.
 
 ####3. Creation of the Training Set & Training Process
 
 Data was collected using the simulator, however large steering angle was being recorded as the input was not coming form a joystick.
-So, that led to the car going off the road while tesing on simulator. Ultimately, the data provided in the project resources was 
-used and parameters tuned to keep the vehicle on track.
+So, that led to the car going off the road while testing on simulato. And I focussed on collecting the data for regions where the model would fail in the simulator.
 
+I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to save itself from going off the track. 
+
+The following images depict the recovery from the right side of the track
+
+![alt text][image1]
+![alt text][image2]
+![alt text][image3]
+
+The following images depict the recovery from the left side of the track
+
+![alt text][image4]
+![alt text][image5]
+![alt text][image6]
+
+The following images depict the recovery of vehicle while on bridge
+
+![alt text][image7]
+![alt text][image8]
+![alt text][image9]
 
 I finally randomly shuffled the data set and put 20% of the data into a validation set. 
 
