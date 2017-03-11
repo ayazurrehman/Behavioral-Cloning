@@ -12,7 +12,7 @@ The goals / steps of this project are the following:
 * Summarize the results with a written report
 
 
-//]: # (Image References)
+[//]: # (Image References)
 
 [image1]: ./examples/right_recovery_1.jpg "Training Data"
 [image2]: ./examples/right_recovery_2.jpg "Training Data"
