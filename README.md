@@ -83,8 +83,7 @@ The model used an adam optimizer, so the learning rate was not tuned manually (m
 ####4. Appropriate training data
 
 Data was collected using the simulator, however large steering angle was being recorded as the input was not coming form a joystick.
-So, that led to the car going off the road while tesing on simulator. Ultimately, the data provided in the project resources was 
-used and parameters tuned to keep the vehicle on track.
+So, that led to the car going off the road while testing on simulato. And I focussed on collecting the data for regions where the model would fail in the simulator as described with images below.
 
 ###Model Architecture and Training Strategy
 
